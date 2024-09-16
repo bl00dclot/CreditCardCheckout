@@ -1,0 +1,105 @@
+.flip-card {
+    background-color: transparent;
+    width: 350px;
+    height: 220px;
+    perspective: 1000px;
+    font-family: "Orbitron", sans-serif;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5%;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 5%;
+  }
+  
+  .flip-card-front {
+    color: rgb(0, 0, 0);
+    background-color: #e5e5f7;
+    opacity: 0.6;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 40px ), repeating-linear-gradient( #444cf755, #444cf7 );
+  }
+  
+  .flip-card-back {
+    background-color: #e5e5f7;
+    background:
+    linear-gradient(#aaafff 15%,
+    black 15% 35%,
+    #aaafff 35%);
+    color: white;
+    transform: rotateY(180deg);
+  }
+  .chip {
+    --nr: 3;
+    --nc: 3;
+    --b: 1px;
+    width: 60px;
+    height: 45px;
+    background: 
+      conic-gradient(from 90deg at var(--b) var(--b),
+      rgb(190, 179, 115) 90deg,#000000 0) calc(-1*var(--b)) calc(-1*var(--b))/
+      calc(100%/var(--nc)) calc(100%/var(--nr));
+      margin-left: 30px;
+      margin-top: 70px;
+      border: black 1px solid;
+      border-radius: 25%;
+      box-shadow: -1px -1px black;
+      position:absolute;
+  }
+  .cardNumber {
+    letter-spacing: .2rem;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 110px;
+  }
+  .monthYear {
+    font-size: 0.8rem;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 160px;
+  }
+  .cardHolder {
+    letter-spacing: .1rem;
+    position: absolute;
+    margin-top: 165px;
+    margin-left: 10px;
+  }
+  .cvc {
+    background-image:
+    repeating-linear-gradient(0deg, #474bff, #474bff 1px, transparent 1px, transparent);
+    background-size: 12px 12px;
+    background-color: #ffffff;
+    margin-left: 20px;
+    margin-top: 100px;
+    width: 300px;
+    height: 35px;
+    position: static;
+    opacity: 0.5;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align:end;
+    padding: 5px;
+  }
+  .descripText {
+    font-size: 0.35rem;
+    width: 300px;
+    margin-left: 20px;
+  }
