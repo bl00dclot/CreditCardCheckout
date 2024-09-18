@@ -1,28 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/creditCard.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-    <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="chip"></div>
-            <div class="cardNumber"><h3>1234    5678    9876    5432</h3></div>
-            <div class="monthYear"><p>Valid until: 01/25</p></div>
-            <div class="cardHolder"><h3>Name Surname</h3></div>
-          </div>
-          <div class="flip-card-back">
-            <p class="cvc">CVC</p>
-            <p class="descripText">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+<%- include("partials/header.ejs") %>
+          <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="chip"></div>
+             <% if (locals.ccNumberOutput) { %>
+                <div class="cardNumber"><h3><%= ccNumberOutput %></h3></div>
+                <div class="monthYear"><p>Valid until:<%= validUntilOutput %></p></div>
+                <div class="cardHolder"><h3><%= ccHolderOutput %></h3></div>
+           <% } else { %>
+              <div class="cardNumber"><h3>1234    5678    9876    5432</h3></div>
+                <div class="monthYear"><p>Valid until: 01/25</p></div>
+                <div class="cardHolder"><h3>Name Surname</h3></div>
+           <% } %>
+            </div>
+            <div class="flip-card-back">
+              <% if (locals.cvcNumberOutput) { %>
+                <p class="cvc"><%= cvcNumberOutput %></p>
+              <% } else { %>
+                <p class="cvc">CVC</p>
+              <% } %>
+              <p class="descripText">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
           </div>
         </div>
-      </div>
-</body>
-</html>
+        
+        <form action="/submit" method="POST">
+          <fieldset>
+          
+          <% if (locals.ccHolderOutput && locals.ccNumberOutput && locals.validUntilOutput && locals.cvcNumberOutput) { %>
+            <div class="submitOutput"><h2> Thank you!</h2>
+            <p>You have subscribed for monthly donations to Sleeping Willow's Animal Shelter :)</p>
+            </div>
+          <% } else { %>
+            <legend>Card Information:</legend>
+            <input type="text" name="ccNumber" placeholder="Credit Card Number"><br><br>
+            <input type="text" name="ccHolder" placeholder="Credit Card Holder"><br><br>
+            <input class="smallBox" type="text" name="validUntil" placeholder="Expiry Date MM/YY">
+            <input class="smallBox" type="text" name="cvcNumber" placeholder="CVC"><br><br>
+            <input type="submit" value="Donate">
+          </fieldset>
+          <% } %>
+            
+        </form>
+<%- include("partials/footer.ejs") %>

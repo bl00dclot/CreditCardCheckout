@@ -32,17 +32,17 @@
   
   .flip-card-front {
     color: rgb(0, 0, 0);
-    background-color: #e5e5f7;
+    background-color: #f7e5e5;
     opacity: 0.6;
-    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 40px ), repeating-linear-gradient( #444cf755, #444cf7 );
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #9effed 40px ), repeating-linear-gradient( #11a58a, #006A4F );
   }
   
   .flip-card-back {
-    background-color: #e5e5f7;
+    background-color: #f7e5e5;
     background:
-    linear-gradient(#aaafff 15%,
+    linear-gradient(#006A4F 15%,
     black 15% 35%,
-    #aaafff 35%);
+    #006A4F 35%);
     color: white;
     transform: rotateY(180deg);
   }
@@ -52,6 +52,7 @@
     --b: 1px;
     width: 60px;
     height: 45px;
+    opacity: 1;
     background: 
       conic-gradient(from 90deg at var(--b) var(--b),
       rgb(190, 179, 115) 90deg,#000000 0) calc(-1*var(--b)) calc(-1*var(--b))/
@@ -68,22 +69,25 @@
     position: absolute;
     margin-left: 25px;
     margin-top: 110px;
+    opacity: 1;
   }
   .monthYear {
     font-size: 0.8rem;
     position: absolute;
     margin-left: 200px;
     margin-top: 160px;
+    opacity: 1;
   }
   .cardHolder {
     letter-spacing: .1rem;
     position: absolute;
     margin-top: 165px;
     margin-left: 10px;
+    opacity: 1;
   }
   .cvc {
     background-image:
-    repeating-linear-gradient(0deg, #474bff, #474bff 1px, transparent 1px, transparent);
+    repeating-linear-gradient(0deg, #ff4747, #ff4747 1px, transparent 1px, transparent);
     background-size: 12px 12px;
     background-color: #ffffff;
     margin-left: 20px;
@@ -102,4 +106,17 @@
     font-size: 0.35rem;
     width: 300px;
     margin-left: 20px;
+  }
+  @media (min-width: 200px) and (max-width: 350px) {
+   .flip-card {
+    display: none;
+   } 
+  }
+  @media (min-width: 350px) and (max-width: 1000px) {
+   .flip-card {
+    transform: scale(0.8);
+   }
+   .flip-card:hover .flip-card-inner {
+    transform: none;
+   }
   }
