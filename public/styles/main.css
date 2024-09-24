@@ -48,8 +48,13 @@ input[type="submit"]:active {
     border: 5px #550000 solid;
     background-color: #750000;        
 }
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #logo {
-    width:100%;
+    width:75%;
 
 }
 fieldset, input[type="text"], input[type="submit"], footer {
